@@ -15,40 +15,79 @@ function divide(a, b) {
 };
 
 function operate(a, operator, b) {
+    let result;
     switch (operator) {
         case "+":
-            result = add(a, b);
+            result = add(a,b);
             break;
         case "-":
-            result = subtract(a, b);
+            result = subtract(a,b);
             break;
         case "*":
-            result = multiply(a, b);
+            result = multiply(a,b);
             break;
         case "/":
-            result = divide(a, b);
+            result = divide(a,b);
             break;
+        default:
+            result = "ERROR"
     }
+    return result;
 }
 
-function display(a) {
-    if (result.value == 0)
-        result.value = ""
-    result.value = result.value + a;
-    displayValue = result.value;
+function displayV(input) {
+    if(clrD || display.value == 0)
+    clearDisplay();
+    display.value = display.value + input;
 }
 
-const result = document.querySelector("#result")
-const numberButtons = document.querySelectorAll(".numbers")
-let displayValue = 0;
-let operator, a, b;
+function clear(){
+userInput=0;
+a=0;
+b=0;
+operator="";
+display.value=0;
+}
+
+function clearDisplay(){
+    userInput=0;
+    display.value="";
+    clrD=false;
+    }
+
+const display = document.querySelector("#result");
+const numberButtons = document.querySelectorAll(".numbers");
+const operatorButtons = document.querySelectorAll(".operator");
+const clearButton = document.querySelector("#clear");
+const equalButton = document.querySelector("#equal");
+let  operator, a, b, result=0, userInput = 0;
+let clrD=false;
 
 numberButtons.forEach(number => {
     number.addEventListener("click", e => {
-        display(e.target.innerText)
+        displayV(e.target.innerText)
+        userInput=userInput+e.target.innerText;
     });
 });
 
+operatorButtons.forEach(operatorr => {
+    operatorr.addEventListener("click", e => {
+        a=parseInt(userInput);
+        operator=e.target.innerText;
+        result=operate(a,operator,b);
+        clrD=true;
+    });
+});
 
+equalButton.addEventListener("click", () =>{
+    b=parseInt(userInput);
+    clearDisplay();
+    result=operate(a,operator,b);
+    displayV(result);
+    a=result;
+})
 
+clearButton.addEventListener("click", () =>{
+    clear();
+})
 

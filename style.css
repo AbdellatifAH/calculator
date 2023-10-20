@@ -1,0 +1,39 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;;
+}
+
+button{
+    width: 46px;
+    height: 46px;
+    color: white;
+    background-color: black;
+}
+
+.calculator{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 235px;
+    border: 2px solid gray;
+}
+
+#result{
+    width: 90px;
+    height: 46px;
+    background-color: black;
+    color: white;
+    font-size: 18px;
+    text-align: right;
+    border: 0;
+}

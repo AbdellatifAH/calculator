@@ -6,37 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
     <link rel="stylesheet" href="./style.css">
-    <script src="./jvs.js"></script>
+    <script src="./jvs.js" defer></script>
 </head>
 
 <body>
     <div class="calculator">
         <div>
-            <button>/</button>
-            <button>C</button>
-            <input type="text" value="" id="result" readonly />
+            <button class="operator">/</button>
+            <button id="clear">C</button>
+            <input type="text" value="0" id="result" readonly />
         </div>
         <div>
-            <button>*</button>
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
+            <button class="operator">*</button>
+            <button class="numbers">7</button>
+            <button class="numbers">8</button>
+            <button class="numbers">9</button>
         </div>
         <div>
-            <button>-</button>
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
+            <button class="operator">-</button>
+            <button class="numbers">4</button>
+            <button class="numbers">5</button>
+            <button class="numbers">6</button>
         </div>
         <div>
-            <button>+</button>
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
+            <button class="operator">+</button>
+            <button class="numbers">1</button>
+            <button class="numbers">2</button>
+            <button class="numbers">3</button>
         </div>
         <div>
-            <button style="width: 96px;">=</button>
-            <button>0</button>
+            <button id="equal">=</button>
+            <button class="numbers">0</button>
             <button>.</button>
         </div>
     </div>

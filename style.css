@@ -20,6 +20,10 @@ button{
     background-color: black;
 }
 
+button#equal{
+    width: 96px;
+}
+
 .calculator{
     display: flex;
     flex-direction: column;

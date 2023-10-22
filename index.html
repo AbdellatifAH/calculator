@@ -11,35 +11,37 @@
 
 <body>
     <div class="calculator">
-        <div>
-            <button class="operator">/</button>
-            <button id="clear">C</button>
-            <input type="text" value="0" id="result" readonly />
+        <input type="text" value="0" id="result" readonly />
+        <div class="first Row">
+            <button id="clear" value="clear" data-key="27" >C</button>
+            <button id="backSpace" value="backspace" data-key="8" > ⌫</button>
+            <button id="percentage" value="%" data-key="53" >%</button>
+            <button class="operator" value="/" data-key="191" >÷</button>
         </div>
-        <div>
-            <button class="operator">*</button>
-            <button class="numbers">7</button>
-            <button class="numbers">8</button>
-            <button class="numbers">9</button>
+        <div class="second Row">
+            <button class="numbers" value="7" data-key="55" >7</button>
+            <button class="numbers" value="8" data-key="56" >8</button>
+            <button class="numbers" value="9" data-key="57" >9</button>
+            <button class="operator" value="*" data-key="106" >×</button>
         </div>
-        <div>
-            <button class="operator">-</button>
-            <button class="numbers">4</button>
-            <button class="numbers">5</button>
-            <button class="numbers">6</button>
+        <div class="third Row">
+            <button class="numbers" value="4" data-key="52" >4</button>
+            <button class="numbers" value="5" data-key="53" >5</button>
+            <button class="numbers" value="6" data-key="54" >6</button>
+            <button class="operator" value="-" data-key="189" >−</button>
         </div>
-        <div>
-            <button class="operator">+</button>
-            <button class="numbers">1</button>
-            <button class="numbers">2</button>
-            <button class="numbers">3</button>
+        <div class="fourth Row">
+            <button class="numbers" value="1" data-key="49" >1</button>
+            <button class="numbers" value="2" data-key="50" >2</button>
+            <button class="numbers" value="3" data-key="51" >3</button>
+            <button class="operator" value="+" data-key="187" >+</button>
         </div>
-        <div>
-            <button id="equal">=</button>
-            <button class="numbers">0</button>
-            <button id="point">.</button>
+        <div class="fifth Row">
+            <button id="sign" value="sign" data-key="192" >+/-</button>
+            <button class="numbers" value="0" data-key="48" >0</button>
+            <button id="point" value="." data-key="190" >.</button>
+            <button id="equal" value="=" data-key="187" >=</button>
         </div>
     </div>
 </body>
-
 </html>

@@ -1,9 +1,12 @@
 const display = document.querySelector("#result");
 const numberButtons = document.querySelectorAll(".numbers");
 const operatorButtons = document.querySelectorAll(".operator");
+const percentagButton = document.querySelector("#percentage");
 const clearButton = document.querySelector("#clear");
 const equalButton = document.querySelector("#equal");
+const backSpaceButton = document.querySelector("#backSpace");
 const pointButton = document.querySelector("#point");
+const signButton = document.querySelector("#sign");
 let operator = '',
     operator2 = '',
     firstOperand = 0,
@@ -76,11 +79,14 @@ function clear() {
         operatorSign.addEventListener("click", operatorButtonsF);
     });
     equalButton.addEventListener("click", equalButtonF)
-    pointButton.addEventListener("click", pointButtonF, { once: true })
+    pointButton.addEventListener("click", pointButtonF)
+    backSpaceButton.addEventListener("click", backSpaceButtonF);
+    percentagButton.addEventListener("click", percentagButtonF);
+    signButton.addEventListener("click", signButtonF);
 }
 
 function numberButtonsF(e) {
-    operandContainer = operandContainer + e.target.innerText;
+    operandContainer = operandContainer + e.target.value;
     dScreen(operandContainer)
 }
 
@@ -88,7 +94,7 @@ function operatorButtonsF(e) {
     if (operator) {
         secondOperand = Number(operandContainer);
         operandContainer = '';
-        operator2 = e.target.innerText;
+        operator2 = e.target.value;
         clrD = true
         firstOperand = operate(firstOperand, operator, secondOperand);
         operator = operator2;
@@ -97,16 +103,19 @@ function operatorButtonsF(e) {
     else {
         firstOperand = Number(operandContainer);
         operandContainer = '';
-        operator = e.target.innerText;
+        operator = e.target.value;
         clrD = true;
     }
-    pointButton.addEventListener("click", pointButtonF, { once: true })
+    pointButton.addEventListener("click", pointButtonF)
 }
 
 function equalButtonF() {
     if (firstOperand != 0 && operator != 0) {
-        equalButton.removeEventListener("click", equalButtonF)
-        pointButton.removeEventListener("click", pointButtonF)
+        equalButton.removeEventListener("click", equalButtonF);
+        backSpaceButton.removeEventListener("click", backSpaceButtonF);
+        percentagButton.removeEventListener("click", percentagButtonF);
+        signButton.removeEventListener("click", signButtonF);
+        pointButton.removeEventListener("click", pointButtonF);
         numberButtons.forEach(number => {
             number.removeEventListener("click", numberButtonsF);
         });
@@ -116,8 +125,10 @@ function equalButtonF() {
         secondOperand = Number(operandContainer);
         operandContainer = '';
         result = operate(firstOperand, operator, secondOperand);
-        if(result)
-        dScreen(Number(result.toFixed(7)))
+        if(result && typeof(result)!=='string')
+        dScreen(Number(result.toFixed(8)));
+        else
+        dScreen(result);
 
     }
     else {
@@ -126,9 +137,26 @@ function equalButtonF() {
     }
 }
 
-function pointButtonF(e) {
-    operandContainer = operandContainer + e.target.innerText;
+function backSpaceButtonF(){
+    operandContainer= operandContainer.slice(0, -1);
+    dScreen(operandContainer)
+}
+
+function percentagButtonF(){
+    operandContainer= (firstOperand*operandContainer)/100;
     dScreen(operandContainer);
+}
+
+function signButtonF(){
+    operandContainer=operandContainer*-1;
+    dScreen(operandContainer);
+}
+
+function pointButtonF(e) {
+    if(!operandContainer.includes(".")){
+    operandContainer = operandContainer + e.target.value;
+    dScreen(operandContainer);
+    }
 }
 
 function delay(time) {
@@ -145,8 +173,17 @@ operatorButtons.forEach(operatorSign => {
 
 equalButton.addEventListener("click", equalButtonF);
 
-clearButton.addEventListener("click", () => {
-    clear();
-})
+backSpaceButton.addEventListener("click", backSpaceButtonF);
 
-pointButton.addEventListener("click", pointButtonF, { once: true })
+clearButton.addEventListener("click", clear);
+
+percentagButton.addEventListener("click", percentagButtonF);
+
+signButton.addEventListener("click", signButtonF);
+
+pointButton.addEventListener("click", pointButtonF);
+
+window.addEventListener('keydown', function(e){
+    const key = document.querySelector(`button[data-key='${e.keyCode}']`);
+    key.click();
+});

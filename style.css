@@ -36,32 +36,44 @@ body{
 }
 
 button{
+    display: flex;
+    justify-content: center;
     width: 90px;
     height: 60px;
     border-radius: 10px;
     color: white;
     background-color: #89898933;
     font-size: 40px;
-    box-shadow: 0;
     border:  gray;
+    padding: 0;
+    line-height:-50px;    
 }
 
-.operator , #backSpace , #percentage , #clear {
+button:hover {
+    filter: brightness(70%);
+}
+
+.operator , .backSpace , .percentage , .clear {
     background-color: #ffffff33;
 }
 
-#equal{
-    background-color: #fa6868;
+.equal{
+    background-color: #fa6868ef;
     color: black;
 }
 
 #result{
-    background-color: rgb(26, 26, 26);
-    width: 98%;
+    background-color: #1A1A1A;
+    width: 408px;
     height: 88px;
     border-radius: 8px;
     color: white;
     font-size: 80px;
     text-align: right;
     border: white 4px solid;
+}
+
+.clear{
+    background-color: #ff3a3ad7;
+    color: black;
 }
